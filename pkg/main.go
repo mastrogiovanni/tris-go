@@ -278,24 +278,24 @@ func (node *Node) BestMove() Bits {
 	var maxI int = 0
 	for i := range node.Children {
 		winners := node.Children[i].CountWinners()
-		fmt.Println("Move:", MoveToIndex(node.Children[i].Move))
+		// fmt.Println("Move:", MoveToIndex(node.Children[i].Move))
 		if node.Children[i].Height%2 == 0 {
 			probability := float64(winners.EvenWinner+winners.NoWinner) / float64(winners.EvenWinner+winners.OddWinner+winners.NoWinner)
-			fmt.Println(probability)
+			// fmt.Println(probability)
 			if probability > max {
 				max = probability
 				maxI = i
 			}
 		} else {
 			probability := float64(winners.OddWinner+winners.NoWinner) / float64(winners.EvenWinner+winners.OddWinner+winners.NoWinner)
-			fmt.Println(probability)
+			// fmt.Println(probability)
 			if probability > max {
 				max = probability
 				maxI = i
 			}
 		}
 	}
-	fmt.Println("Best choice", MoveToIndex(node.Children[maxI].Move))
+	// fmt.Println("Best choice", MoveToIndex(node.Children[maxI].Move))
 	return node.Children[maxI].Move
 }
 
